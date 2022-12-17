@@ -7,28 +7,28 @@ class NN_Test():
 
     def initialize_parameters(self):
         parameters = self.nn.initialize_parameters(3, 2, 1)
-        print('\n\nTest Task 1 Initialize Parameters:\n')
+        print('\n\nTest Step 1 Initialize Parameters:\n')
         print("W1 = " + str(parameters["W1"]))
         print("b1 = " + str(parameters["b1"]))
         print("W2 = " + str(parameters["W2"]))
         print("b2 = " + str(parameters["b2"]))
 
-    def test2(self):
+    def initialize_parameters_deep(self):
         parameters = self.nn.initialize_parameters_deep([5,4,3])
-        print('\n\nTest Task 2:\n')
+        print('\n\nTest Step 2 initialize parameters deep:\n')
         print("W1 = " + str(parameters["W1"]))
         print("b1 = " + str(parameters["b1"]))
         print("W2 = " + str(parameters["W2"]))
         print("b2 = " + str(parameters["b2"]))
 
-    def test3(self):
-        print('\n\nTest Task 3:\n')
+    def linear_forward(self):
+        print('\n\nTest Step 3 linear forward:\n')
         A, W, b = linear_forward_test_case()
         Z, linear_cache = self.nn.linear_forward(A, W, b)
         print("Z = " + str(Z))
 
-    def test4(self):
-        print('\n\nTest Task 4:\n')
+    def linear_activation_forward(self):
+        print('\n\nTest Step 4 linear activation forward:\n')
         A_prev, W, b = linear_activation_forward_test_case()
 
         A, linear_activation_cache = self.nn.linear_activation_forward(A_prev, W, b, activation="sigmoid")
@@ -37,21 +37,21 @@ class NN_Test():
         A, linear_activation_cache = self.nn.linear_activation_forward(A_prev, W, b, activation="relu")
         print("With ReLU: A = " + str(A))
 
-    def test5(self):
-        print('\n\nTest Task 5:\n')
+    def L_model_forward(self):
+        print('\n\nTest Step 5 L model forward:\n')
         X, parameters = L_model_forward_test_case_2hidden()
         AL, caches = self.nn.L_model_forward(X, parameters)
         print("AL = " + str(AL))
         print("Length of caches list = " + str(len(caches)))
 
-    def test6(self):
-        print('\n\nTest Task 6:\n')
+    def compute_cost(self):
+        print('\n\nTest Step 6 compute cost:\n')
         Y, AL = compute_cost_test_case()
 
         print("cost = " + str(self.nn.compute_cost(AL, Y)))
 
-    def test7(self):
-        print('\n\nTest Task 7:\n')
+    def linear_backward(self):
+        print('\n\nTest Step 7 linear_backward:\n')
         dZ, linear_cache = linear_backward_test_case()
         dA_prev, dW, db = self.nn.linear_backward(dZ, linear_cache)
         print("dA_prev = " + str(dA_prev))
@@ -59,7 +59,7 @@ class NN_Test():
         print("db = " + str(db))
 
     def linear_activation_backward(self):
-        print('\n\nTest No 8: Linear Activation Backward:\n')
+        print('\n\nTest Step 8: Linear Activation Backward:\n')
         dAL, linear_activation_cache = linear_activation_backward_test_case()
 
         dA_prev, dW, db = self.nn.linear_activation_backward(dAL, linear_activation_cache, activation="sigmoid")
@@ -90,14 +90,14 @@ class NN_Test():
         print("b2 = " + str(parameters["b2"]))
 
 
-    def run_all_tests(self):
+    def run_all(self):
         self.initialize_parameters()
-        self.test2()
-        self.test3()
-        self.test4()
-        self.test5()
-        self.test6()
-        self.test7()
+        self.initialize_parameters_deep()
+        self.linear_forward()
+        self.linear_activation_forward()
+        self.L_model_forward()
+        self.compute_cost()
+        self.linear_backward()
         self.linear_activation_backward()
         self.L_model_backward()
         self.update_parameters()
