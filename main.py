@@ -1,9 +1,8 @@
 from experimentParams import*
 from nn import *
-def print_hi(text):
-    # Use a breakpoint in the code line below to debug your script.
 
-    print(f'Hi, {text}')  # Press Ctrl+F8 to toggle the breakpoint.
+def print_hi(text):
+    print(f'Hi, {text}')  
 
 
 if __name__ == '__main__':
